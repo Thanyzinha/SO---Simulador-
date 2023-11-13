@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Substituição de Páginas</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Matriz SWAP</h1>
+<table id="matrizSwap">
+    <tr>
+        <th>Número de Página</th>
+        <th>Instrução</th>
+        <th>Dado</th>
+        <th>Bit de Acesso R</th>
+        <th>Bit de Modificação M</th>
+        <th>Tempo de Envelhecimento</th>
+    </tr>
+</table>
+
+<h1>Matriz RAM</h1>
+<table id="matrizRAM">
+    <tr>
+        <th>Número de Página</th>
+        <th>Instrução</th>
+        <th>Dado</th>
+        <th>Bit de Acesso R</th>
+        <th>Bit de Modificação M</th>
+        <th>Tempo de Envelhecimento</th>
+    </tr>
+</table>
+
+<script>
+    function criarLinhaTabela(matriz, tabela) {
+        var tr = document.createElement('tr');
+        for (var i = 0; i < matriz.length; i++) {
+            var td = document.createElement('td');
+            td.appendChild(document.createTextNode(matriz[i]));
+            tr.appendChild(td);
+        }
+        tabela.appendChild(tr);
+    }
+
+    function preencherMatrizes() {
+        var matrizSwap = [
+            [0, 1, 10, 0, 0, 500],
+            [1, 2, 20, 0, 0, 700],
+            // ... mais linhas da matriz Swap
+        ];
+
+        var matrizRAM = [
+            [0, 1, 10, 0, 0, 500],
+            [1, 2, 20, 0, 0, 700],
+            // ... mais linhas da matriz RAM
+        ];
+
+        var tabelaSwap = document.getElementById('matrizSwap');
+        var tabelaRAM = document.getElementById('matrizRAM');
+
+        for (var i = 0; i < matrizSwap.length; i++) {
+            criarLinhaTabela(matrizSwap[i], tabelaSwap);
+        }
+
+        for (var j = 0; j < matrizRAM.length; j++) {
+            criarLinhaTabela(matrizRAM[j], tabelaRAM);
+        }
+    }
+
+    // Chama a função para preencher as tabelas assim que a página carrega
+    window.onload = preencherMatrizes;
+</script>
+
+</body>
+</html>
